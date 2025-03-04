@@ -1,5 +1,19 @@
-# Basic Git Scraper Template
+# Science & Health Git Scraper
 
+Explanation of changes made to the original scraper:
+1. Edited comments to reflect the new scraper's intent: scraping top headlines from the Science & Health page
+2. Changed URL from main page to Science & Health page
+3. Looked for the appropriate class of the Science & Health headlines, "row section-article" (using the find function)
+4. Found the headline text by checking for the "h3"
+5. Removed the whitespace/URL using .text.strip()
+In summary, I altered the scraper to scrape the top healdines from the Science & Health page (rather than the main
+headline of the main page) by accordingly editing the URL, class we search for, and how we find/clean the healdine text.
+
+Description: This code scrapes the top headline from the Science & Health page of The Daily Pennsylvanian, once per day at 11:59 PM.
+Author: Mia Kim, using template from Professor Lumbroso (jlumbroso)
+
+From template:
+"""
 This template provides a starting point for **git scraping**—the technique of scraping data from websites and automatically committing it to a Git repository using workflows, [coined by Simon Willison](https://simonwillison.net/2020/Oct/9/git-scraping/).
 
 Git scraping helps create an audit trail capturing snapshots of data over time. It leverages Git's version control and a continuous integration's scheduling capabilities to regularly scrape sites and save data without needing to manage servers.
@@ -135,3 +149,4 @@ But it is important to use it responsibly and ethically. Here are some guideline
 9. Document your scraping process thoroughly for replicability, transparency and accountability.
 
 10. Continuously re-evaluate your scraping program against applicable laws and ethical principles.
+"""
