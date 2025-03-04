@@ -15,7 +15,8 @@ import loguru
 
 def scrape_data_point():
     """
-    Scrapes the main headline from The Daily Pennsylvanian home page.
+    # changed function description
+    Scrapes the top headline from The Daily Pennsylvanian Health&Science page. 
 
     Returns:
         str: The headline text if found, otherwise an empty string.
@@ -23,14 +24,17 @@ def scrape_data_point():
     headers = {
         "User-Agent": "cis3500-scraper"
     }
-    req = requests.get("https://www.thedp.com", headers=headers)
+    # changed URL
+    req = requests.get("https://www.thedp.com/section/health", headers=headers)
     loguru.logger.info(f"Request URL: {req.url}")
     loguru.logger.info(f"Request status code: {req.status_code}")
 
     if req.ok:
         soup = bs4.BeautifulSoup(req.text, "html.parser")
-        target_element = soup.find("a", class_="frontpage-link")
-        data_point = "" if target_element is None else target_element.text
+        # changed html elements we find via (the find only gets the topmost article)
+        target_element = soup.find("div", class_="row section-article")
+        # edited how we find our headlien text
+        data_point = "" if target_element is None else target_element.find("h3").text.strip()
         loguru.logger.info(f"Data point: {data_point}")
         return data_point
 
